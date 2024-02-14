@@ -1,11 +1,11 @@
-FROM nginx:alpine
+# FROM nginx:alpine
 
-WORKDIR /usr/share/nginx/html
+# WORKDIR /usr/share/nginx/html
 
-RUN rm -rf ./*
+# RUN rm -rf ./*
 
-# COPY ./app/* /usr/share/nginx/html
+# # COPY ./app/* /usr/share/nginx/html
 
-EXPOSE 80
+# EXPOSE 80
 
-CMD ["nginx", "-g", "daemon off;"]
+# CMD ["nginx", "-g", "daemon off;"]
