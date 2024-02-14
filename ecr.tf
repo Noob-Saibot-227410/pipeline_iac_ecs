@@ -6,3 +6,6 @@ resource "aws_ecr_repository" "application_repository" {
 output "ecr_repository_url" {
   value = aws_ecr_repository.application_repository.repository_url
 }
+
+
+
