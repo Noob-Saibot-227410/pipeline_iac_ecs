@@ -1,4 +1,4 @@
-name: treinamento no video rodando cicd
+name: projeto automatizado completo etapa 3 cicd deploy aplicacao
 
 on:
   push:
@@ -17,26 +17,23 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          # aws-region: ${{ secrets.aws-region }}
           aws-region: us-east-1
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
         with:
           terraform_version: 1.0.0
-       
-       
+
       - name: Terraform Init
         run: terraform init
-
-      - name: Terraform Apply
-        run: terraform apply -auto-approve
 
       # - name: Terraform Destroy
       #   run: terraform destroy -auto-approve
 
+      - name: Terraform Apply
+        run: terraform apply -auto-approve
 
-build-and-push-docker:
+  build-and-push-docker:
     needs: deploy
     runs-on: ubuntu-latest
     steps:
@@ -71,7 +68,7 @@ build-and-push-docker:
             echo "Deleted image with digest $digest"
           done
 
-update-ecs-service:
+  update-ecs-service:
     needs: build-and-push-docker
     name: Update ECS Service
     runs-on: ubuntu-latest
